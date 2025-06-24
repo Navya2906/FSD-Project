@@ -8,7 +8,7 @@ const {
   MessageSchema,
 } = require("./Schema");
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 /**************************************** */
 app.use(express.json());
@@ -41,6 +41,10 @@ app.get("/messages/:complaintId", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Failed to retrieve messages" });
   }
+});
+
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
 });
 
 /***********for signup user************************************** */
